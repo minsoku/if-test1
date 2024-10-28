@@ -20,8 +20,9 @@ export default function Home() {
 
   useEffect(() => {
     const receiveMessage = (event) => {
-      // 부모 측에서 수신
+      console.log('메시지 수신 이벤트:', event); // 모든 메시지를 로그로 출력
       if (event.origin !== 'https://www.minsoku.shop') {
+        console.log('잘못된 출처:', event.origin);
         return; // 출처 확인
       }
       console.log('받은 메시지:', event.data);
