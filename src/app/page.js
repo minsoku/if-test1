@@ -5,12 +5,8 @@ import styles from "./page.module.css";
 
 export default function Home() {
   const setCookie = () => {
-    let expires = "";
-    const date = new Date();
-    date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
-    expires = "; expires=" + date.toUTCString();
-
-    document.cookie = "meme" + "=" + ("meme" || "") + expires + "; path=/" + "domain=minsoku.shop";
+    document.cookie = "volleh=hi; path=/; domain=minsoku.shop; max-age=360000";
+    console.log(document.cookie);
   };
 
 
@@ -19,7 +15,7 @@ export default function Home() {
   };
 
   const deleteCookie = () => {
-    document.cookie = "meme" + '=; Max-Age=-99999999;'; // 즉시 만료
+    document.cookie = "volleh" + '=; Max-Age=-99999999;';
   };
   return (
     <div className={styles.page}>
