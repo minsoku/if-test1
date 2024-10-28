@@ -10,7 +10,7 @@ export default function Home() {
     date.setTime(date.getTime() + (24 * 60 * 60 * 1000));
     expires = "; expires=" + date.toUTCString();
 
-    document.cookie = "meme" + "=" + ("meme" || "") + expires + "; path=/";
+    document.cookie = "meme" + "=" + ("meme" || "") + expires + "; path=/" + "domain=minsoku.shop";
   };
 
 
