@@ -10,7 +10,6 @@ export default function Home() {
     console.log(document.cookie);
   };
 
-
   const handleGetCookie = () => {
     console.log(document.cookie);
   };
@@ -21,15 +20,14 @@ export default function Home() {
 
   useEffect(() => {
     const receiveMessage = (event) => {
-      console.log(event);
-      if (event.origin !== 'https://test.minsoku.shop') {
-        return;
+      // 부모 측에서 수신
+      if (event.origin !== 'https://www.minsoku.shop') {
+        return; // 출처 확인
       }
-      console.log('if-test1', event.data);
+      console.log('받은 메시지:', event.data);
     };
 
     window.addEventListener('message', receiveMessage);
-
 
     return () => {
       window.removeEventListener('message', receiveMessage);
@@ -39,8 +37,6 @@ export default function Home() {
   return (
     <div className={styles.page}>
       기존페이지
-
-      붙이는 페이지 
       <button onClick={setCookie}>쿠키 설정</button>
       <button onClick={handleGetCookie}>쿠키 읽기</button>
       <button onClick={deleteCookie}>쿠키 삭제</button>
