@@ -21,7 +21,8 @@ export default function Home() {
 
   useEffect(() => {
     const receiveMessage = (event) => {
-      if (event.origin !== 'https://test.minsoku.shop/') {
+      console.log(event);
+      if (event.origin !== 'https://test.minsoku.shop') {
         return;
       }
       console.log('if-test1', event.data);
