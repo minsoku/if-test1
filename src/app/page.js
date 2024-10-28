@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import styles from "./page.module.css";
+import { useEffect } from "react";
 
 export default function Home() {
   const setCookie = () => {
@@ -17,6 +18,23 @@ export default function Home() {
   const deleteCookie = () => {
     document.cookie = "volleh" + '=; Max-Age=-99999999;';
   };
+
+  useEffect(() => {
+    const receiveMessage = (event) => {
+      if (event.origin !== 'https://www.test.minsoku.shop/') {
+        return;
+      }
+      console.log('if-test1', event.data);
+    };
+
+    window.addEventListener('message', receiveMessage);
+
+
+    return () => {
+      window.removeEventListener('message', receiveMessage);
+    };
+  }, []);
+
   return (
     <div className={styles.page}>
       기존페이지
