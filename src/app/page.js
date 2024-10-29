@@ -19,14 +19,16 @@ export default function Home() {
   };
 
   useEffect(() => {
+    console.log('부모: useEffect');
+    
     const receiveMessage = (event) => {
-      console.log('이벤트 :', event);
-      console.log('출처 :', event.origin);
-      
-      console.log('받은 event:', event);
+      console.log('부모 : ', event);
+      console.log('출처', event.origin);
+      console.log('데이터', event.data);
     };
-    console.log('메시지 addEventListener');
+  
     window.addEventListener('message', receiveMessage);
+    console.log('부모: addEventListener');
   
     return () => {
       window.removeEventListener('message', receiveMessage);
