@@ -23,12 +23,7 @@ export default function Home() {
       console.log('이벤트 :', event);
       console.log('출처 :', event.origin);
       
-      // if (event.origin !== 'https://www.minsoku.shop') {
-      //   console.log('잘못된 출처:', event.origin);
-      //   return;
-      // }
-      
-      console.log('받은 메시지:', event.data);
+      console.log('받은 event:', event);
     };
     console.log('메시지 addEventListener');
     window.addEventListener('message', receiveMessage);
