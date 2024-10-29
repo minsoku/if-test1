@@ -18,6 +18,18 @@ export default function Home() {
     document.cookie = "volleh" + '=; Max-Age=-99999999;';
   };
 
+  const sendMessageToChild = () => {
+    try {
+      window.postMessage({
+        type: 'PARENT_MESSAGE',
+        data: '부모가 보낸 메시지입니다'
+      }, 'https://www.test.minsoku.shop');
+      console.log('자식에게 메시지 전송 완료');
+    } catch (error) {
+      console.error('메시지 전송 실패:', error);
+    }
+  };
+
   useEffect(() => {
     console.log('부모: useEffect');
     
@@ -41,6 +53,7 @@ export default function Home() {
       <button onClick={setCookie}>쿠키 설정</button>
       <button onClick={handleGetCookie}>쿠키 읽기</button>
       <button onClick={deleteCookie}>쿠키 삭제</button>
+      <button onClick={sendMessageToChild}>자식에게 메시지</button>
     </div>
   );
 }
