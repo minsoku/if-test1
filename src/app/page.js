@@ -19,13 +19,13 @@ export default function Home() {
 
   const sendMessageToChild = () => {
     try {
-    const childWindow = window.open('https://www.test.minsoku.shop');
+    const childWindow = window.open('https://test.minsoku.shop');
     console.log(childWindow);
     if (childWindow) {
       childWindow.postMessage({
         type: 'PARENT_MESSAGE',
         data: '부모가 보낸 메시지입니다'
-      }, 'https://www.test.minsoku.shop');
+      }, 'https://test.minsoku.shop');
       console.log('(부모) : 자식에게 메시지 전송 완료');} 
     }catch (error) {
       console.error('(부모) : 메시지 전송 실패:', error);
@@ -33,16 +33,17 @@ export default function Home() {
   };
 
   useEffect(() => {
-    console.log('부모: useEffect');
+    console.log('(부모) : useEffect');
     
     const receiveMessage = (event) => {
       console.log('(부모) : ', event);
     };
   
     window.addEventListener('message', receiveMessage);
-    console.log('(부모): addEventListener');
+    console.log('(부모) : addEventListener');
   
     return () => {
+      console.log('(부모) : unMount');
       window.removeEventListener('message', receiveMessage);
     };
   }, []);
