@@ -1,7 +1,7 @@
 "use client"
 
 import styles from "./page.module.css";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 
 export default function Home() {
   // const [message, setMessage] = useState('default');
