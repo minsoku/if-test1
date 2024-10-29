@@ -1,6 +1,5 @@
 "use client"
 
-import Image from "next/image";
 import styles from "./page.module.css";
 import { useEffect } from "react";
 
@@ -20,13 +19,16 @@ export default function Home() {
 
   const sendMessageToChild = () => {
     try {
-      window.postMessage({
+    const childWindow = window.open('https://www.test.minsoku.shop');
+    console.log(childWindow);
+    if (childWindow) {
+      childWindow.postMessage({
         type: 'PARENT_MESSAGE',
         data: '부모가 보낸 메시지입니다'
       }, 'https://www.test.minsoku.shop');
-      console.log('자식에게 메시지 전송 완료');
-    } catch (error) {
-      console.error('메시지 전송 실패:', error);
+      console.log('(부모) : 자식에게 메시지 전송 완료');} 
+    }catch (error) {
+      console.error('(부모) : 메시지 전송 실패:', error);
     }
   };
 
@@ -35,8 +37,6 @@ export default function Home() {
     
     const receiveMessage = (event) => {
       console.log('(부모) : ', event);
-      console.log('(부모 출처) :', event.origin);
-      console.log('(부모 데이터) :', event.data);
     };
   
     window.addEventListener('message', receiveMessage);
