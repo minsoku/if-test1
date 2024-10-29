@@ -22,13 +22,13 @@ export default function Home() {
     console.log('부모: useEffect');
     
     const receiveMessage = (event) => {
-      console.log('부모 : ', event);
-      console.log('출처', event.origin);
-      console.log('데이터', event.data);
+      console.log('(부모) : ', event);
+      console.log('(부모 출처) :', event.origin);
+      console.log('(부모 데이터) :', event.data);
     };
   
     window.addEventListener('message', receiveMessage);
-    console.log('부모: addEventListener');
+    console.log('(부모): addEventListener');
   
     return () => {
       window.removeEventListener('message', receiveMessage);
