@@ -32,9 +32,7 @@ export default function Home() {
     }
   };
 
-  useEffect(() => {
-    console.log('(자식) : useEffect');
-    
+  useEffect(() => {    
     const receiveMessage = (event) => {
       if (event.origin === "https://test.minsoku.shop") {
         setMessage(event.data.data)
@@ -42,8 +40,7 @@ export default function Home() {
     };
   
     window.addEventListener('message', receiveMessage);
-    console.log('(자식) : addEventListener');
-  
+
     return () => {
       console.log('(자식) : unMount');
       window.removeEventListener('message', receiveMessage);
