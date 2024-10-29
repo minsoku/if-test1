@@ -19,38 +19,35 @@ export default function Home() {
 
   const sendMessageToChild = () => {
     try {
-    const childWindow = window.open('https://test.minsoku.shop');
-    console.log(childWindow);
-    if (childWindow) {
-      childWindow.postMessage({
-        type: 'PARENT_MESSAGE',
-        data: '부모가 보낸 메시지입니다'
+    window.parent.postMessage({
+      type: 'CHILD_MESSAGE',
+      data: '자식이 보낸 메시지입니다'
       }, 'https://test.minsoku.shop');
-      console.log('(부모) : 자식에게 메시지 전송 완료');} 
-    }catch (error) {
-      console.error('(부모) : 메시지 전송 실패:', error);
+    console.log('(자식) : 부모님께 메시지 전송 완료');
+    } catch (error) {
+      console.error('(자식) : 메시지 전송 실패:', error);
     }
   };
 
   useEffect(() => {
-    console.log('(부모) : useEffect');
+    console.log('(자식) : useEffect');
     
     const receiveMessage = (event) => {
-      console.log('(부모) : ', event);
+      console.log('(자식) : ', event);
     };
   
     window.addEventListener('message', receiveMessage);
-    console.log('(부모) : addEventListener');
+    console.log('(자식) : addEventListener');
   
     return () => {
-      console.log('(부모) : unMount');
+      console.log('(자식) : unMount');
       window.removeEventListener('message', receiveMessage);
     };
   }, []);
 
   return (
     <div className={styles.page}>
-      기존페이지
+      여기가 자식페이지임
       <button onClick={setCookie}>쿠키 설정</button>
       <button onClick={handleGetCookie}>쿠키 읽기</button>
       <button onClick={deleteCookie}>쿠키 삭제</button>
