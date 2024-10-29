@@ -51,7 +51,7 @@ export default function Home() {
       <button onClick={setCookie}>쿠키 설정</button>
       <button onClick={handleGetCookie}>쿠키 읽기</button>
       <button onClick={deleteCookie}>쿠키 삭제</button>
-      <button onClick={sendMessageToChild}>자식에게 메시지</button>
+      <button onClick={sendMessageToChild}>부모님께 메시지</button>
     </div>
   );
 }
